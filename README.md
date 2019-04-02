@@ -1,1 +1,1 @@
-# Coppersmith-Algorithm
+# Coppersmith's Algorithm
