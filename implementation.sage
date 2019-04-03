@@ -31,4 +31,19 @@ M = D*M
 Mhat = M.submatrix(0,0,8,8)
 #print Mhat
 
-print Mhat.LLL()
+L = Mhat.LLL()
+#print L
+
+C = L.gram_schmidt()[0].row(7)
+#print C
+
+lst = []
+for i in range(8):
+    lst.append(x^i/5^i)
+s = vector(lst)
+#print s
+
+equ = s.dot_product(C)
+#print equ
+
+solve(equ, x)
