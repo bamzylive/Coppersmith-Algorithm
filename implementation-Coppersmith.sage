@@ -1,18 +1,17 @@
 #!/usr/bin/env sage
 
-p = [[19,14,1],
-     [361,532,234,28,1]]
-N = 35
-h = 3
-d = 2
+p = [[-60000081,0,70000000,-10000000,1]]
+N = 100000000
+d = len(p[0])-1
+h = 2
 hd = h*d
-X = 2
+X = 5
 rsize = (h-1)*d
 size = hd + rsize
 
 entries = {}
 for i in range(hd):
-    entries[(i,i)] = 1/X^i
+    entries[(i,i)] = X^(hd-1-i)
 for i in range(h-1):
     for j in range(d):
         for k in range(len(p[i])):
@@ -44,14 +43,13 @@ L = Mhat.LLL()
 #print L
 
 C = L.gram_schmidt()[0].row(hd-1)
+C = C/gcd(list(C))
 #print C
 
 lst = []
 for i in range(hd):
     lst.append(x^i/X^i)
 s = vector(lst)
-#print s
-
 equ = s.dot_product(C)
 #print equ
 
